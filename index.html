@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Diabetes Detection AI</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #0d6efd;
+      color: white;
+      padding: 1rem 2rem;
+      text-align: center;
+    }
+    .container {
+      max-width: 600px;
+      margin: 2rem auto;
+      background: white;
+      padding: 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border-radius: 8px;
+    }
+    input, label {
+      display: block;
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+    input[type="number"], input[type="text"] {
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    input[type="submit"] {
+      background: #0d6efd;
+      color: white;
+      padding: 0.7rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    input[type="submit"]:hover {
+      background: #0b5ed7;
+    }
+    .result {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Diabetes Detection AI</h1>
+  <p>Predict if a person has diabetes using machine learning</p>
+</header>
+
+<div class="container">
+  <form action="/predict" method="POST">
+    <label>Pregnancies</label>
+    <input type="number" name="Pregnancies" required>
+
+    <label>Glucose</label>
+    <input type="number" name="Glucose" required>
+
+    <label>Blood Pressure</label>
+    <input type="number" name="BloodPressure" required>
+
+    <label>Skin Thickness</label>
+    <input type="number" name="SkinThickness" required>
+
+    <label>Insulin</label>
+    <input type="number" name="Insulin" required>
+
+    <label>BMI</label>
+    <input type="text" name="BMI" required>
+
+    <label>Diabetes Pedigree Function</label>
+    <input type="text" name="DiabetesPedigreeFunction" required>
+
+    <label>Age</label>
+    <input type="number" name="Age" required>
+
+    <input type="submit" value="Predict">
+  </form>
+
+  {% if prediction_text %}
+    <div class="result">{{ prediction_text }}</div>
+  {% endif %}
+</div>
+
+</body>
+</html>
+
